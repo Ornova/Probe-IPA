@@ -4,8 +4,8 @@
 	margin-left: 5em;
 	display: grid;
 	gap: 20px;
-	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: repeat(1fr 1fr 1fr);
+	grid-template-columns: 1fr 1fr 1fr;
 	background-color: white;
 	width: fit-content;
 }

@@ -1,14 +1,16 @@
 .menuitem {
 	display: grid;
-	width: 250px;
-	border: 1px solid black;
-	border-radius: 5%;
 	grid-template-areas:
 		"name"
 		"price"
 		"description";
 	grid-template-rows: auto;
 	grid-template-columns: auto;
+	border: 1px solid black;
+	border-radius: 5%;
+	width: 250px;
+	min-width: 200px;
+	margin: 5px;
 
 	.name {
 		grid-area: name;
