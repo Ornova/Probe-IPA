@@ -6,7 +6,7 @@ import Menuitem from "./Menuitem";
 //import { useHistory } from "react-router-dom";
 
 const WeekDisplay = props => {
-	//const history = useHistory();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+	//const history = useHistory();
 	const [dates, setDates] = useState([]);
 	const date = props.date;
 

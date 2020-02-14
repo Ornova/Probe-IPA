@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./../scss/customerview.scss";
 import WeekDisplay from "./WeekDisplay";
 import Sidemenu from "./Sidemenu";
-import { restaurants } from "./../json/restaurants";
 //import { useHistory } from "react-router-dom";
 
 const CustomerView = props => {

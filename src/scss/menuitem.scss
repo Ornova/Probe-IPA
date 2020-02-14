@@ -32,4 +32,14 @@
 		padding-bottom: 3px;
 		height: min-content;
 	}
+	.menuitem-button {
+	}
+	.menuitem-button-1 {
+		position: relative;
+		top: traslateY(50%);
+	}
+	.menuitem-button-2 {
+		position: relative;
+		top: 0;
+	}
 }

@@ -14,10 +14,11 @@ const DayDislay = props => {
 			selectedMenus.map(n => {
 				return allItems.map(item => {
 					if (n === item.id) filteredMenus.push(item);
+					return n === item.id;
 				});
 			});
 			return filteredMenus.map(m => (
-				<Menuitem key={m.id} name={m.name} price={m.price} description={m.desc} />
+				<Menuitem key={m.id} name={m.name} price={m.price} description={m.desc} id={m.id} />
 			));
 		}
 	}
