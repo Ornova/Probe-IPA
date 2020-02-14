@@ -1,0 +1,31 @@
+.sidemenu-button {
+	padding-top: 0.25em;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	.sidemenu-toggler {
+		border: 2px solid rgb(51, 51, 51);
+		border-radius: 100%;
+		height: 4.2em;
+		width: 4.2em;
+	}
+}
+.sidemenu {
+	color: white;
+	background-color: rgb(51, 51, 51);
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	height: 100%;
+	width: 4em;
+	z-index: 5;
+}
+.expanded-sidemenu {
+	color: white;
+	background-color: rgb(51, 51, 51);
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	height: 100%;
+	width: 12em;
+	z-index: 5;
+}

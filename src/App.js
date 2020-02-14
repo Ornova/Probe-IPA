@@ -1,26 +1,71 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import Sidemenu from "./components/Sidemenu";
+import Menulist from "./components/Menulist";
+import DayDisplay from "./components/DayDisplay";
+import WeekDisplay from "./components/WeekDisplay";
+import CustomerView from "./components/CustomerView";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<Router>
+			<div>
+				<Switch>
+					<Route path="/login">
+						<Login />
+					</Route>
+					<Route path="/adminview"></Route>
+					<Route path="/menu" /*Menuitemlist*/>
+						<Sidemenu />
+					</Route>
+					<Route path="/test">
+						<Menulist />
+					</Route>
+					<Route path="/daydisplay">
+						<DayDisplay />
+					</Route>
+					<Route path="/weekdisplay">
+						<WeekDisplay />
+					</Route>
+					<Route path="/cust">
+						<CustomerView />
+					</Route>
+					<Route path="/" /*CustomerView*/>
+						<nav>
+							<ul>
+								<li>
+									<Link to="/">Home</Link>
+								</li>
+								<li>
+									<Link to="/login">Login</Link>
+								</li>
+								<li>
+									<Link to="/adminview">Adminview</Link>
+								</li>
+								<li>
+									<Link to="/menu">Menu</Link>
+								</li>
+								<li>
+									<Link to="/test">Test</Link>
+								</li>
+								<li>
+									<Link to="/daydisplay">Day Display</Link>
+								</li>
+								<li>
+									<Link to="/weekdisplay">Week Display</Link>
+								</li>
+								<li>
+									<Link to="/cust">CustomerView</Link>
+								</li>
+							</ul>
+						</nav>
+					</Route>
+				</Switch>
+			</div>
+		</Router>
+	);
+};
 
 export default App;

@@ -1,0 +1,33 @@
+.menuitem {
+	display: grid;
+	width: 250px;
+	border: 1px solid black;
+	border-radius: 5%;
+	grid-template-areas:
+		"name"
+		"price"
+		"description";
+	grid-template-rows: auto;
+	grid-template-columns: auto;
+
+	.name {
+		grid-area: name;
+		padding-top: 3px;
+		padding-left: 3px;
+		padding-right: 3px;
+		height: min-content;
+	}
+	.price {
+		grid-area: price;
+		padding-left: 3px;
+		padding-right: 3px;
+		height: min-content;
+	}
+	.description {
+		grid-area: description;
+		padding-left: 3px;
+		padding-right: 3px;
+		padding-bottom: 3px;
+		height: min-content;
+	}
+}
