@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./../scss/sidemenu.scss";
 import { restaurants } from "./../json/restaurants";
 import { useHistory } from "react-router-dom";
 
 const Sidemenu = () => {
 	const history = useHistory();
+
 	const [isExpanded, toggleIsExpanded] = useState();
 
 	function redirect(r) {
@@ -15,11 +15,13 @@ const Sidemenu = () => {
 	function listAllNavOptions() {
 		let restaurantList = [];
 		let filteredRestaurants = [];
+
 		if (restaurants)
 			restaurants.filter(r => {
 				if (r.visibility === 0) filteredRestaurants.push(r);
 				return r.visibility === 0;
 			});
+
 		if (filteredRestaurants)
 			filteredRestaurants.map(f =>
 				restaurantList.push(
@@ -28,6 +30,7 @@ const Sidemenu = () => {
 					</li>
 				)
 			);
+
 		return restaurantList.map(r => r);
 	}
 

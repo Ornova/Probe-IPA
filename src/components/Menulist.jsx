@@ -13,6 +13,7 @@ const Menulist = props => {
 			return (
 				<Menuitem
 					key={item.name}
+					id={item.id}
 					name={item.name}
 					price={item.price}
 					description={item.desc}

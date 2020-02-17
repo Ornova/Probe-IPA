@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./../scss/menuitem.scss";
-//import { useHistory } from "react-router-dom";
 
 const Menuitem = props => {
 	useEffect(() => {
 		if (props.id) {
-			console.log(props);
 			setPos(document.getElementById(props.id).getBoundingClientRect());
 		}
 	}, [props, props.id]);
+
 	const [areButtonsVisible, toggleAreButtonsVisible] = useState(false);
 	const [pos, setPos] = useState();
-	//const history = useHistory();
 
 	function showButtons() {
 		toggleAreButtonsVisible(!areButtonsVisible);
@@ -27,7 +25,7 @@ const Menuitem = props => {
 				<input
 					type="button"
 					className="menuitem-button menuitem-button-1"
-					style={{ position: "relative", left: pos.width, top: -pos.height }}
+					style={{ position: "relative", left: pos.width, top: -pos.height }} //Todo animate
 				/>
 			) : null}
 			{areButtonsVisible ? (

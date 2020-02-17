@@ -5,7 +5,6 @@ import Login from "./components/Login";
 import Sidemenu from "./components/Sidemenu";
 import Menulist from "./components/Menulist";
 import DayDisplay from "./components/DayDisplay";
-import WeekDisplay from "./components/WeekDisplay";
 import CustomerView from "./components/CustomerView";
 
 const App = () => {
@@ -25,9 +24,6 @@ const App = () => {
 					</Route>
 					<Route path="/daydisplay">
 						<DayDisplay />
-					</Route>
-					<Route path="/weekdisplay">
-						<WeekDisplay />
 					</Route>
 					<Route path="/cust">
 						<CustomerView />
@@ -52,9 +48,6 @@ const App = () => {
 								</li>
 								<li>
 									<Link to="/daydisplay">Day Display</Link>
-								</li>
-								<li>
-									<Link to="/weekdisplay">Week Display</Link>
 								</li>
 								<li>
 									<Link to="/cust">CustomerView</Link>

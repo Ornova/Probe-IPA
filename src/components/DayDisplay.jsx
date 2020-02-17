@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./../scss/daydisplay.scss";
 import Menuitem from "./Menuitem";
 import { allItems } from "./../json/menu";
-//import { useHistory } from "react-router-dom";
 
 const DayDislay = props => {
-	const [selectedMenus, setSelectedMenus] = useState([1, 2]);
+	useEffect(() => {
+		if (props) {
+			setPos(document.getElementById(props.id).getBoundingClientRect());
+		}
+	}, [props]);
+
+	const [selectedMenus, setSelectedMenus] = useState();
+	const [pos, setPos] = useState();
+
 	let filteredMenus = [];
-	//const history = useHistory();
+
+	function handleButtonClick() {
+		if (pos) console.log("pos", pos);
+	}
 
 	function compare() {
 		if (selectedMenus) {
@@ -23,7 +33,26 @@ const DayDislay = props => {
 		}
 	}
 
-	return <div className="daydisplay">{compare()}</div>;
+	return (
+		<div className="daydisplay" id={props.id}>
+			<div>
+				{compare()}
+				{pos ? (
+					<input
+						type="button"
+						onClick={() => handleButtonClick()}
+						value="+"
+						className="add-button"
+						style={{
+							position: "relative",
+							left: pos.width - 50 - 4,
+							top: -pos.height + 4
+						}}
+					/>
+				) : null}
+			</div>
+		</div>
+	);
 };
 
 export default DayDislay;

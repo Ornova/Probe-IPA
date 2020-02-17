@@ -8,6 +8,8 @@ const CustomerView = props => {
 	const selectedRestaurant = 1;
 	const momentNow = moment();
 	const momentNow2 = moment().add(7, "days");
+	const momentNow3 = moment().add(14, "days");
+	const momentNow4 = moment().add(21, "days");
 	const dayOne = momentNow.day();
 
 	return (
@@ -17,6 +19,16 @@ const CustomerView = props => {
 			<WeekDisplay
 				dayOne={dayOne}
 				date={momentNow2}
+				selectedRestaurant={selectedRestaurant}
+			/>
+			<WeekDisplay
+				dayOne={dayOne}
+				date={momentNow3}
+				selectedRestaurant={selectedRestaurant}
+			/>
+			<WeekDisplay
+				dayOne={dayOne}
+				date={momentNow4}
 				selectedRestaurant={selectedRestaurant}
 			/>
 		</div>

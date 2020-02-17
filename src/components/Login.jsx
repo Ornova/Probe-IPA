@@ -1,55 +1,48 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./../scss/login.scss";
 
-class Login extends Component {
-	state = {
-		username: "",
-		password: "",
-		redir: false,
-		user: { username: "user", password: "password" }
-	};
-	history = useHistory();
+const Login = () => {
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 
-	setValue = event => {
-		this.setState({ [event.currentTarget.id]: event.currentTarget.value });
-	};
+	const user = { username: "user", password: "password" };
 
-	handleLogin = event => {
-		event.preventDefault();
-		if (
-			this.state.username === this.state.user.username &&
-			this.state.password === this.state.user.password
-		) {
-			this.history.push("/adminview");
+	let history = useHistory();
+
+	function handleLogin() {
+		localStorage.setItem("menu", "[{ day: { date: 21022020, menus: [{ id: 12 }] } }]");
+
+		if (username === user.username && password === user.password) {
+			history.push("/adminview");
 		}
-	};
 
-	render = () => {
-		return (
-			<div className="login">
-				<div>
-					User:
-					<input
-						className="username-input"
-						value={this.state.username}
-						id="username"
-						onChange={e => this.setValue(e)}
-					/>
-				</div>
-				<div>
-					Password:
-					<input
-						className="password-input"
-						value={this.state.password}
-						id="password"
-						onChange={e => this.setValue(e)}
-					/>
-				</div>
-				<input type="button" value="Login" onClick={e => this.handleLogin(e)} />
+		console.log(localStorage.getItem("menu"));
+	}
+
+	return (
+		<div className="login">
+			<div>
+				User:
+				<input
+					className="username-input"
+					value={username}
+					id="username"
+					onChange={e => setUsername(e.currentTarget.value)}
+				/>
 			</div>
-		);
-	};
-}
+			<div>
+				Password:
+				<input
+					className="password-input"
+					value={password}
+					id="password"
+					onChange={e => setPassword(e.currentTarget.value)}
+				/>
+			</div>
+			<input type="button" value="Login" onClick={e => handleLogin(e)} />
+		</div>
+	);
+};
 
 export default Login;
