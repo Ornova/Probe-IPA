@@ -4,57 +4,110 @@ import "./../scss/buttons.scss";
 import DayDisplay from "./DayDisplay";
 import Menuitem from "./Menuitem";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 const WeekDisplay = props => {
-	const monday = moment()
-		.subtract(props.dayOne, "days")
-		.add(1, "days");
+	const momentclone = props.date;
+	const menuStore = useSelector(state => state.menu);
 
 	return (
 		<div className="weekdisplay">
 			<div>
-				{monday.format("ddd DD-MM-YYYY")}
+				{moment(momentclone)
+					.subtract(props.dayOne, "days")
+					.add(1, "days")
+					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
-					selectedRestaurant={props.selectedRestaurant}
-					date={monday}
+					selectedRestaurant={menuStore.selectedMenu}
+					date={moment(momentclone)
+						.subtract(props.dayOne, "days")
+						.add(1, "days")}
 					day={1}
-					id={monday + 1}
+					id={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") + 1
+					}
 				/>
 			</div>
 			<div>
-				{monday.add(24, "hours").format("ddd DD-MM-YYYY")}
+				{moment(momentclone)
+					.subtract(props.dayOne, "days")
+					.add(1, "days")
+					.add(24, "hours")
+					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
-					selectedRestaurant={props.selectedRestaurant}
-					date={monday}
+					selectedRestaurant={menuStore.selectedMenu}
+					date={moment(momentclone)
+						.subtract(props.dayOne, "days")
+						.add(1, "days")
+						.add(24, "hours")}
 					day={2}
-					id={monday + 2}
+					id={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") + 2
+					}
 				/>
 			</div>
 			<div>
-				{monday.add(24, "hours").format("ddd DD-MM-YYYY")}
+				{moment(momentclone)
+					.subtract(props.dayOne, "days")
+					.add(1, "days")
+					.add(48, "hours")
+					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
-					selectedRestaurant={props.selectedRestaurant}
-					date={monday}
+					selectedRestaurant={menuStore.selectedMenu}
+					date={moment(momentclone)
+						.subtract(props.dayOne, "days")
+						.add(1, "days")
+						.add(48, "hours")}
 					day={3}
-					id={monday + 3}
+					id={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") + 3
+					}
 				/>
 			</div>
 			<div>
-				{monday.add(24, "hours").format("ddd DD-MM-YYYY")}
+				{moment(momentclone)
+					.subtract(props.dayOne, "days")
+					.add(1, "days")
+					.add(72, "hours")
+					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
-					selectedRestaurant={props.selectedRestaurant}
-					date={monday}
+					selectedRestaurant={menuStore.selectedMenu}
+					date={moment(momentclone)
+						.subtract(props.dayOne, "days")
+						.add(1, "days")
+						.add(72, "hours")}
 					day={4}
-					id={monday + 1}
+					id={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") + 1
+					}
 				/>
 			</div>
 			<div>
-				{monday.add(24, "hours").format("ddd DD-MM-YYYY")}
+				{moment(momentclone)
+					.subtract(props.dayOne, "days")
+					.add(1, "days")
+					.add(96, "hours")
+					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
-					selectedRestaurant={props.selectedRestaurant}
-					date={monday}
+					selectedRestaurant={menuStore.selectedMenu}
+					date={moment(momentclone)
+						.subtract(props.dayOne, "days")
+						.add(1, "days")
+						.add(96, "hours")}
 					day={5}
-					id={monday + 1}
+					id={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") + 1
+					}
 				/>
 			</div>
 			<div>

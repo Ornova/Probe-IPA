@@ -1,15 +1,15 @@
 import React from "react";
-import "./../scss/customerview.scss";
+import "./../scss/adminview.scss";
 import WeekDisplay from "./WeekDisplay";
 import Sidemenu from "./Sidemenu";
 import moment from "moment";
 
-const CustomerView = props => {
+const AdminView = props => {
 	const selectedRestaurant = 1;
 	const momentNow = moment();
-	const momentNow2 = moment().add(7, "days");
-	const momentNow3 = moment().add(14, "days");
-	const momentNow4 = moment().add(21, "days");
+	const momentNow2 = moment(momentNow).add(7, "days");
+	const momentNow3 = moment(momentNow).add(14, "days");
+	const momentNow4 = moment(momentNow).add(21, "days");
 	const dayOne = momentNow.day();
 
 	return (
@@ -35,4 +35,4 @@ const CustomerView = props => {
 	);
 };
 
-export default CustomerView;
+export default AdminView;
