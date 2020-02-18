@@ -35,6 +35,20 @@ const Menuitem = props => {
 		history.push("/cust");
 	}
 
+	/*
+	function selectMenuitem(id) {
+		dispatch(
+			addItemToMenu({
+				selectedMenu: menuStore.selectedMenu,
+				date: menuStore.isChoosingMenuitem.date,
+				selectMenuitem: id
+			})
+		);
+		dispatch(isChoosingMenuitem({ bool: false, id: null }));
+		history.push("/cust");
+	}
+	*/
+
 	return (
 		<div>
 			<div
@@ -54,6 +68,7 @@ const Menuitem = props => {
 				<input
 					value="..."
 					type="button"
+					onClick={() => {}}
 					className="menuitem-button menuitem-button-1"
 					style={{ position: "relative", left: pos.width, top: -pos.height }}
 				/>
@@ -62,6 +77,7 @@ const Menuitem = props => {
 				<input
 					value="Clear"
 					type="button"
+					onClick={() => {}}
 					className="menuitem-button menuitem-button-2"
 					style={{ position: "relative", left: pos.width, top: -pos.height }}
 				/>
