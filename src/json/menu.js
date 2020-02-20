@@ -1,3 +1,20 @@
+import { useDispatch } from "react-redux";
+import { importMenus } from "./../redux/_actions/menu.actions";
+
+export function writeToLocal(pos, item) {
+	localStorage.setItem(pos, JSON.stringify(item));
+}
+export function getFromLocal() {
+	const dispatch = useDispatch();
+	dispatch(
+		importMenus({
+			menu1: localStorage.getItem("menu1"),
+			menu2: localStorage.getItem("menu2"),
+			menu3: localStorage.getItem("menu3")
+		})
+	);
+}
+
 export const allItems = [
 	{
 		id: 1,

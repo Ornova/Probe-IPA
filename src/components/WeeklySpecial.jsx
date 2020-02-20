@@ -5,14 +5,15 @@ import { allItems } from "./../json/menu";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { isChoosingMenuitem } from "./../redux/_actions/menu.actions";
+import moment from "moment";
 
-const DayDislay = props => {
+const WeeklySpecial = props => {
 	const history = useHistory();
 	const menuStore = useSelector(state => state.menu);
 	const dispatch = useDispatch();
 
 	function handleButtonClick() {
-		dispatch(isChoosingMenuitem({ bool: true, date: props.date.format("DD-MM-YYYY") }));
+		dispatch(isChoosingMenuitem({ bool: true, date: moment(props.date).isoWeek() }));
 		history.push("/menulist");
 	}
 
@@ -62,25 +63,23 @@ const DayDislay = props => {
 	}
 
 	return (
-		<div className="daydisplay" id={props.id}>
-			<div>
-				{compare()}
-				{menuStore.isAdmin && (
-					<input
-						type="button"
-						onClick={event => handleButtonClick()}
-						value="+"
-						className="button "
-						style={{
-							position: "relative",
-							bootom: 0,
-							right: 0
-						}}
-					/>
-				)}
-			</div>
+		<div className="weeklyspecial" id={props.id}>
+			{compare()}
+			{menuStore.isAdmin && (
+				<input
+					type="button"
+					onClick={event => handleButtonClick()}
+					value="+"
+					className="button "
+					style={{
+						position: "relative",
+						bootom: 0,
+						right: 0
+					}}
+				/>
+			)}
 		</div>
 	);
 };
 
-export default DayDislay;
+export default WeeklySpecial;

@@ -3,8 +3,10 @@ import "./../scss/adminview.scss";
 import WeekDisplay from "./WeekDisplay";
 import Sidemenu from "./Sidemenu";
 import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
 
 const AdminView = props => {
+	const menuStore = useSelector(state => state.menu);
 	const selectedRestaurant = 1;
 	const momentNow = moment();
 	const momentNow2 = moment(momentNow).add(7, "days");

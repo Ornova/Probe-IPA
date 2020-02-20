@@ -1,25 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./../scss/menuitem.scss";
 import { addItemToMenu, isChoosingMenuitem, removeItem } from "./../redux/_actions/menu.actions";
 import { useHistory } from "react-router-dom";
 
 const Menuitem = props => {
-	useEffect(() => {
-		if (props.id) {
-			setPos(document.getElementById(props.id).getBoundingClientRect());
-		}
-	}, [props, props.id]);
-
 	const dispatch = useDispatch();
 	const menuStore = useSelector(state => state.menu);
 	const history = useHistory();
 
 	const [areButtonsVisible, toggleAreButtonsVisible] = useState(false);
-	const [pos, setPos] = useState();
 
 	function showButtons() {
-		toggleAreButtonsVisible(!areButtonsVisible);
+		if (menuStore.isAdmin) {
+			toggleAreButtonsVisible(!areButtonsVisible);
+		}
 		// console.log(pos);
 	}
 
@@ -32,22 +27,16 @@ const Menuitem = props => {
 			})
 		);
 		dispatch(isChoosingMenuitem({ bool: false, id: null }));
-		history.push("/cust");
+		if (menuStore.isAdmin) history.push("/admin");
+		else history.push("/");
 	}
 
-	/*
-	function selectMenuitem(id) {
-		dispatch(
-			addItemToMenu({
-				selectedMenu: menuStore.selectedMenu,
-				date: menuStore.isChoosingMenuitem.date,
-				selectMenuitem: id
-			})
-		);
-		dispatch(isChoosingMenuitem({ bool: false, id: null }));
-		history.push("/cust");
+	function changeItemPreparation() {
+		dispatch(isChoosingMenuitem({ bool: true, date: props.date }));
+		history.push("/menulist");
+
+		dispatch(removeItem({ date: props.date, id: props.id }));
 	}
-	*/
 
 	return (
 		<div>
@@ -57,31 +46,41 @@ const Menuitem = props => {
 				onClick={() => {
 					return menuStore.isChoosingMenuitem.bool
 						? selectMenuitem(props.id)
-						: showButtons();
+						: props.date
+						? showButtons()
+						: props.selectItem({
+								id: props.id,
+								name: props.name,
+								price: props.price,
+								description: props.description
+						  });
 				}}
 			>
 				<div className="name">{props.name}</div>
 				<div className="price">{props.price}</div>
 				<div className="description">{props.description}</div>
+
+				{menuStore.isAdmin && areButtonsVisible && (
+					<div>
+						<input
+							value="..."
+							type="button"
+							onClick={() => {
+								changeItemPreparation();
+							}}
+							className="button menuitem-button-1"
+						/>
+						<input
+							value="Clear"
+							type="button"
+							onClick={() => {
+								dispatch(removeItem({ date: props.date, id: props.id }));
+							}}
+							className="button menuitem-button-2"
+						/>
+					</div>
+				)}
 			</div>
-			{areButtonsVisible ? (
-				<input
-					value="..."
-					type="button"
-					onClick={() => {}}
-					className="menuitem-button menuitem-button-1"
-					style={{ position: "relative", left: pos.width, top: -pos.height }}
-				/>
-			) : null}
-			{areButtonsVisible ? (
-				<input
-					value="Clear"
-					type="button"
-					onClick={() => {}}
-					className="menuitem-button menuitem-button-2"
-					style={{ position: "relative", left: pos.width, top: -pos.height }}
-				/>
-			) : null}
 		</div>
 	);
 };

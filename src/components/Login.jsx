@@ -1,20 +1,23 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { toggleAdmin } from "./../redux/_actions/menu.actions";
 import "./../scss/login.scss";
 
 const Login = () => {
+	const menuStore = useSelector(state => state.menu.isAdmin);
+	const dispatch = useDispatch();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
 	const user = { username: "user", password: "password" };
 
-	let history = useHistory();
+	const history = useHistory();
 
 	function handleLogin() {
-		localStorage.setItem("menu", "[{ day: { date: 21022020, menus: [{ id: 12 }] } }]");
-
 		if (username === user.username && password === user.password) {
-			history.push("/adminview");
+			dispatch(toggleAdmin(!menuStore));
+			history.push("/admin");
 		}
 
 		console.log(localStorage.getItem("menu"));
@@ -40,7 +43,12 @@ const Login = () => {
 					onChange={e => setPassword(e.currentTarget.value)}
 				/>
 			</div>
-			<input type="button" value="Login" onClick={e => handleLogin(e)} />
+			<input
+				type="button"
+				classname="button is-rounded"
+				value="Login"
+				onClick={e => handleLogin(e)}
+			/>
 		</div>
 	);
 };

@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import "./../scss/sidemenu.scss";
 import { restaurants } from "./../json/restaurants";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { changeMenu, toggleAdmin } from "./../redux/_actions/menu.actions";
 
 const Sidemenu = () => {
 	const history = useHistory();
 
+	const dispatch = useDispatch();
+	const menuStore = useSelector(state => state.menu);
 	const [isExpanded, toggleIsExpanded] = useState();
-
-	function redirect(r) {
-		history.push(r);
-	}
 
 	function listAllNavOptions() {
 		let restaurantList = [];
@@ -25,7 +25,13 @@ const Sidemenu = () => {
 		if (filteredRestaurants)
 			filteredRestaurants.map(f =>
 				restaurantList.push(
-					<li key={f.id} onClick={() => redirect(f.route)}>
+					<li
+						key={f.id}
+						onClick={() => {
+							dispatch(changeMenu(f.statevalue));
+							history.push("/cust");
+						}}
+					>
 						{f.name}
 					</li>
 				)
@@ -40,14 +46,48 @@ const Sidemenu = () => {
 				<label htmlFor="sidemenu-toggler">
 					<input
 						type="button"
-						className="sidemenu-toggler"
+						className="button is-rounded sidemenu-toggler"
 						onClick={() => {
 							toggleIsExpanded(!isExpanded);
 						}}
 					></input>
 				</label>
 			</div>
-			{isExpanded ? <ul>{listAllNavOptions()}</ul> : <div></div>}
+			<input
+				type="button"
+				className="button is-rounded"
+				onClick={() => {
+					dispatch(toggleAdmin(!menuStore.isAdmin));
+				}}
+			/>
+			{isExpanded && (
+				<ul>
+					{listAllNavOptions()}
+					{menuStore.isAdmin && (
+						<div>
+							<input
+								type="button"
+								className="button is-rounded"
+								onClick={() => history.push("/admin")}
+								value="Admin"
+							/>
+							<input
+								type="button"
+								className="button is-rounded"
+								onClick={() => history.push("/")}
+								value="Cust"
+							/>
+
+							<input
+								type="button"
+								className="button is-rounded"
+								onClick={() => history.push("/menulist")}
+								value="List"
+							/>
+						</div>
+					)}
+				</ul>
+			)}
 		</div>
 	);
 };

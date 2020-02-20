@@ -3,6 +3,7 @@ import "./../scss/weekdisplay.scss";
 import "./../scss/buttons.scss";
 import DayDisplay from "./DayDisplay";
 import Menuitem from "./Menuitem";
+import WeeklySpecial from "./WeeklySpecial";
 import moment from "moment";
 import { useSelector } from "react-redux";
 
@@ -11,7 +12,7 @@ const WeekDisplay = props => {
 	const menuStore = useSelector(state => state.menu);
 
 	return (
-		<div className="weekdisplay">
+		<div className="weekdisplay is-rounded">
 			<div>
 				{moment(momentclone)
 					.subtract(props.dayOne, "days")
