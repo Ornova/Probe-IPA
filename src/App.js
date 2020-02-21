@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Provider } from "react-redux";
 import { configureStore } from "./redux/store";
+import { Provider } from "react-redux";
 import Login from "./components/Login";
 import Menulist from "./components/Menulist";
 import AdminView from "./components/AdminView";
 import CustomerView from "./components/CustomerView";
-import "./App.css";
-import "bulma";
 import { allItems, getItems } from "./json/menu";
+import "bulma";
+import "./App.css";
 
 const store = configureStore();
 
