@@ -8,9 +8,9 @@ import { allItems } from "./../json/menu";
 import "./../scss/daydisplay.scss";
 
 const WeeklySpecial = props => {
-	const history = useHistory();
 	const menuStore = useSelector(state => state.menu);
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	/**
 	 * handles the "+"-Button and tries to add an Item afterwards

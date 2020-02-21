@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "./../scss/sidemenu.scss";
 import { restaurants } from "./../json/restaurants";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeMenu } from "./../redux/_actions/menu.actions";
 
 const Sidemenu = () => {
 	// hooks
+	const isAdmin = useSelector(state => state.menu.isAdmin);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -36,7 +37,7 @@ const Sidemenu = () => {
 						key={f.id}
 						onClick={() => {
 							dispatch(changeMenu(f.statevalue));
-							history.push("/cust");
+							isAdmin ? history.push("/admin") : history.push("/");
 						}}
 					>
 						{f.name}
