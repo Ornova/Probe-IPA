@@ -8,7 +8,7 @@ import AdminView from "./components/AdminView";
 import CustomerView from "./components/CustomerView";
 import "./App.css";
 import "bulma";
-import { allItems, writeToLocal, getFromLocal } from "./json/menu";
+import { allItems, getItems } from "./json/menu";
 
 const store = configureStore();
 
@@ -21,7 +21,9 @@ const App = () => {
 		}
 	}
 
-	getFromLocal(store);
+	if (store) {
+		getItems(store);
+	}
 
 	return (
 		<Provider store={store}>

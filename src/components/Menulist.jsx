@@ -60,6 +60,7 @@ const Menulist = props => {
 
 	return (
 		<div>
+			{/* Displays the Navigation Menu on the lefthand side of the Page */}
 			<Sidemenu />
 			<div className="menulist">{showAllItems()}</div>
 			{menuStore.isAdmin && (

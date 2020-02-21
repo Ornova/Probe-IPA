@@ -1,15 +1,19 @@
 import React from "react";
-import "./../scss/weekdisplay.scss";
-import "./../scss/buttons.scss";
-import DayDisplay from "./DayDisplay";
-import Menuitem from "./Menuitem";
-import WeeklySpecial from "./WeeklySpecial";
-import moment from "moment";
 import { useSelector } from "react-redux";
+import moment from "moment";
+import Menuitem from "./Menuitem";
+import DayDisplay from "./DayDisplay";
+import "./../scss/buttons.scss";
+import "./../scss/weekdisplay.scss";
 
+/**
+ * Displays all different days in each Week, and the weekly special
+ * @param {Object} props
+ */
 const WeekDisplay = props => {
-	const momentclone = props.date;
 	const menuStore = useSelector(state => state.menu);
+
+	const momentclone = props.date;
 
 	return (
 		<div className="weekdisplay is-rounded">

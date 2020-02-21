@@ -1,22 +1,28 @@
 import React from "react";
-import "./../scss/daydisplay.scss";
-import Menuitem from "./Menuitem";
-import { allItems } from "./../json/menu";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { isChoosingMenuitem } from "./../redux/_actions/menu.actions";
 import moment from "moment";
+import Menuitem from "./Menuitem";
+import { isChoosingMenuitem } from "./../redux/_actions/menu.actions";
+import { allItems } from "./../json/menu";
+import "./../scss/daydisplay.scss";
 
 const WeeklySpecial = props => {
 	const history = useHistory();
 	const menuStore = useSelector(state => state.menu);
 	const dispatch = useDispatch();
 
+	/**
+	 * handles the "+"-Button and tries to add an Item afterwards
+	 */
 	function handleButtonClick() {
 		dispatch(isChoosingMenuitem({ bool: true, date: moment(props.date).isoWeek() }));
 		history.push("/menulist");
 	}
 
+	/**
+	 * filters for relevant menuitems to display
+	 */
 	function compare() {
 		let filteredByDateMenus = [];
 		let filteredMenus = [];
@@ -50,6 +56,7 @@ const WeeklySpecial = props => {
 				return n === item.id;
 			});
 		});
+		// returns menuitems to display them afterwards
 		return filteredMenus.map(m => (
 			<Menuitem
 				key={m.id}
@@ -70,7 +77,7 @@ const WeeklySpecial = props => {
 					type="button"
 					onClick={event => handleButtonClick()}
 					value="+"
-					className="button "
+					className="button"
 					style={{
 						position: "relative",
 						bootom: 0,

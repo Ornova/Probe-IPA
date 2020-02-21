@@ -1,18 +1,27 @@
-import { useDispatch } from "react-redux";
 import { importMenus } from "./../redux/_actions/menu.actions";
 
+/**
+ * writes one thing from the redux store to the localstorage
+ * @param {string} pos where to write, the item, to in the localstorage
+ * @param {Array of Objects} item an array of Objects to write to the localstorage
+ */
 export function writeToLocal(pos, item) {
 	localStorage.setItem(pos, JSON.stringify(item));
 }
-export function getFromLocal() {
-	const dispatch = useDispatch();
-	dispatch(
-		importMenus({
-			menu1: localStorage.getItem("menu1"),
-			menu2: localStorage.getItem("menu2"),
-			menu3: localStorage.getItem("menu3")
-		})
-	);
+
+/**
+ * writes all items from the localstorage to the redux store
+ * @param {the redux store} store
+ */
+export function getItems(store) {
+	if (store)
+		store.dispatch(
+			importMenus({
+				menu1: JSON.parse(localStorage.getItem("menu1")),
+				menu2: JSON.parse(localStorage.getItem("menu2")),
+				menu3: JSON.parse(localStorage.getItem("menu3"))
+			})
+		);
 }
 
 export const allItems = [

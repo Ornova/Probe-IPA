@@ -1,26 +1,27 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleAdmin } from "./../redux/_actions/menu.actions";
 import "./../scss/login.scss";
 
 const Login = () => {
+	// hooks
 	const menuStore = useSelector(state => state.menu.isAdmin);
 	const dispatch = useDispatch();
+	const history = useHistory();
+
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
+	// the default user with dummydata to simulate the login process
 	const user = { username: "user", password: "password" };
 
-	const history = useHistory();
-
+	// thests the login-fields if they are corresponding with the user
 	function handleLogin() {
 		if (username === user.username && password === user.password) {
 			dispatch(toggleAdmin(!menuStore));
 			history.push("/admin");
 		}
-
-		console.log(localStorage.getItem("menu"));
 	}
 
 	return (

@@ -1,4 +1,4 @@
-import { writeToLocal, getFromLocal } from "./../../json/menu";
+import { writeToLocal } from "./../../json/menu";
 import {
 	TOGGLE_ADMIN,
 	CHANGE_MENU,
@@ -59,8 +59,6 @@ export default (state = preloadedState, action) => {
 			}
 		case REMOVE_ITEM:
 			let menu = [];
-			console.log(action);
-			console.log(action.payload);
 			switch (state.selectedMenu) {
 				case "menu1":
 					menu = state.menu1.filter(
