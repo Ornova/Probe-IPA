@@ -46,7 +46,7 @@ const Login = () => {
 			</div>
 			<input
 				type="button"
-				classname="button is-rounded"
+				className="button is-rounded"
 				value="Login"
 				onClick={e => handleLogin(e)}
 			/>

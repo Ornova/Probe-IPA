@@ -62,7 +62,21 @@ const Sidemenu = () => {
 				</label>
 			</div>
 			{/* if sidemenu is expanded */}
-			{isExpanded && <ul>{listAllNavOptions()}</ul>}
+			{isExpanded && (
+				<ul>
+					{listAllNavOptions()}
+					{isAdmin ? (
+						<li
+							key="menuitemlist"
+							onClick={() => {
+								history.push("/menulist");
+							}}
+						>
+							Menulist
+						</li>
+					) : null}
+				</ul>
+			)}
 		</div>
 	);
 };
