@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenu } from "./../redux/_actions/menu.actions";
 
+import { toggleAdmin } from "./../redux/_actions/menu.actions";
+
 const Sidemenu = () => {
 	// hooks
 	const isAdmin = useSelector(state => state.menu.isAdmin);
@@ -75,6 +77,15 @@ const Sidemenu = () => {
 							Menulist
 						</li>
 					) : null}
+					<li>
+						<input
+							type="button"
+							className="button is-rounded"
+							onClick={() => {
+								dispatch(toggleAdmin(!isAdmin));
+							}}
+						/>
+					</li>
 				</ul>
 			)}
 		</div>

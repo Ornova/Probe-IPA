@@ -5,6 +5,7 @@ import Menuitem from "./Menuitem";
 import DayDisplay from "./DayDisplay";
 import "./../scss/buttons.scss";
 import "./../scss/weekdisplay.scss";
+import WeeklySpecial from "./WeeklySpecial";
 
 /**
  * Displays all different days in each Week, and the weekly special
@@ -20,13 +21,16 @@ const WeekDisplay = props => {
 			<div>
 				{moment(momentclone)
 					.subtract(props.dayOne, "days")
-					.add(1, "days")
+					.add(1, "days") // 1 day
+
 					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
 					selectedRestaurant={menuStore.selectedMenu}
-					date={moment(momentclone)
-						.subtract(props.dayOne, "days")
-						.add(1, "days")}
+					date={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") // 1 day
+					}
 					day={1}
 					id={
 						moment(momentclone)
@@ -38,15 +42,17 @@ const WeekDisplay = props => {
 			<div>
 				{moment(momentclone)
 					.subtract(props.dayOne, "days")
-					.add(1, "days")
-					.add(24, "hours")
+					.add(1, "days") // 1 day
+					.add(24, "hours") // 1 day
 					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
 					selectedRestaurant={menuStore.selectedMenu}
-					date={moment(momentclone)
-						.subtract(props.dayOne, "days")
-						.add(1, "days")
-						.add(24, "hours")}
+					date={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") // 1 day
+							.add(24, "hours") // 1 day
+					}
 					day={2}
 					id={
 						moment(momentclone)
@@ -58,15 +64,17 @@ const WeekDisplay = props => {
 			<div>
 				{moment(momentclone)
 					.subtract(props.dayOne, "days")
-					.add(1, "days")
-					.add(48, "hours")
+					.add(1, "days") // 1 day
+					.add(48, "hours") // 2 days
 					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
 					selectedRestaurant={menuStore.selectedMenu}
-					date={moment(momentclone)
-						.subtract(props.dayOne, "days")
-						.add(1, "days")
-						.add(48, "hours")}
+					date={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") // 1 day
+							.add(48, "hours") // 2 days
+					}
 					day={3}
 					id={
 						moment(momentclone)
@@ -78,15 +86,17 @@ const WeekDisplay = props => {
 			<div>
 				{moment(momentclone)
 					.subtract(props.dayOne, "days")
-					.add(1, "days")
-					.add(72, "hours")
+					.add(1, "days") // 1 day
+					.add(72, "hours") // 3 days
 					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
 					selectedRestaurant={menuStore.selectedMenu}
-					date={moment(momentclone)
-						.subtract(props.dayOne, "days")
-						.add(1, "days")
-						.add(72, "hours")}
+					date={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") // 1 day
+							.add(72, "hours") // 3 days
+					}
 					day={4}
 					id={
 						moment(momentclone)
@@ -98,15 +108,17 @@ const WeekDisplay = props => {
 			<div>
 				{moment(momentclone)
 					.subtract(props.dayOne, "days")
-					.add(1, "days")
-					.add(96, "hours")
+					.add(1, "days") // 1 day
+					.add(96, "hours") // 4 days
 					.format("ddd DD-MM-YYYY")}
 				<DayDisplay
 					selectedRestaurant={menuStore.selectedMenu}
-					date={moment(momentclone)
-						.subtract(props.dayOne, "days")
-						.add(1, "days")
-						.add(96, "hours")}
+					date={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") // 1 day
+							.add(96, "hours") // 4 days
+					}
 					day={5}
 					id={
 						moment(momentclone)
@@ -115,9 +127,17 @@ const WeekDisplay = props => {
 					}
 				/>
 			</div>
+			{}
 			<div>
 				Weekly Special
-				<Menuitem />
+				<WeeklySpecial
+					date={
+						moment(momentclone)
+							.subtract(props.dayOne, "days")
+							.add(1, "days") // 1 day
+							.add(144, "hours") // 4 days
+					}
+				/>
 			</div>
 		</div>
 	);

@@ -56,7 +56,10 @@ const DayDislay = props => {
 		}
 		filteredByDateMenus.map(n => {
 			return allItems.map(item => {
-				if (n.id === item.id) filteredMenus.push(item);
+				if (n.id === item.id) {
+					filteredMenus.push(item);
+					console.log(item);
+				}
 				return n === item.id;
 			});
 		});

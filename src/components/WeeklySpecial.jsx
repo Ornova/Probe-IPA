@@ -1,36 +1,40 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import moment from "moment";
+import { useHistory } from "react-router-dom";
 import Menuitem from "./Menuitem";
 import { isChoosingMenuitem } from "./../redux/_actions/menu.actions";
 import { allItems } from "./../json/menu";
 import "./../scss/daydisplay.scss";
 
 const WeeklySpecial = props => {
+	//hooks
+	const history = useHistory();
 	const menuStore = useSelector(state => state.menu);
 	const dispatch = useDispatch();
-	const history = useHistory();
 
 	/**
-	 * handles the "+"-Button and tries to add an Item afterwards
+	 * handles the click of the "+"-Button to add an item to the day
 	 */
 	function handleButtonClick() {
-		dispatch(isChoosingMenuitem({ bool: true, date: moment(props.date).isoWeek() }));
+		dispatch(isChoosingMenuitem({ bool: true, date: props.date.format("DD-MM-YYYY") }));
+		// redirect to the menulist
 		history.push("/menulist");
 	}
 
 	/**
-	 * filters for relevant menuitems to display
+	 * goes through the whole list of menus to sort out which ones are relevant for us
+	 * in respect to the menu and the date they are selected for
 	 */
 	function compare() {
 		let filteredByDateMenus = [];
 		let filteredMenus = [];
 
+		//filters for the menu
 		switch (menuStore.selectedMenu) {
 			case "menu1":
 				if (menuStore.menu1)
 					filteredByDateMenus = menuStore.menu1.filter(n => {
+						// filter for the day
 						return n.date === props.date.format("DD-MM-YYYY");
 					});
 				break;
@@ -52,11 +56,15 @@ const WeeklySpecial = props => {
 		}
 		filteredByDateMenus.map(n => {
 			return allItems.map(item => {
-				if (n.id === item.id) filteredMenus.push(item);
+				if (n.id === item.id) {
+					filteredMenus.push(item);
+					console.log(item);
+				}
 				return n === item.id;
 			});
 		});
-		// returns menuitems to display them afterwards
+
+		// output of all menuitems one for one
 		return filteredMenus.map(m => (
 			<Menuitem
 				key={m.id}
@@ -78,6 +86,7 @@ const WeeklySpecial = props => {
 					onClick={event => handleButtonClick()}
 					value="+"
 					className="button"
+					date={props.date.format("DD-MM-YYYY")}
 					style={{
 						position: "relative",
 						bootom: 0,
