@@ -95,7 +95,7 @@ const Login = () => {
 							<i className="fas fa-envelope"></i>
 						</span>
 					</p>
-					<div className="is-size-7 has-text-right">
+					<div className="is-size-7 has-text-right has-text-danger">
 						{!logginFailureReason.username.value
 							? logginFailureReason.username.reason
 							: null}
@@ -117,7 +117,7 @@ const Login = () => {
 							<i className="fas fa-lock"></i>
 						</span>
 					</p>
-					<div className="is-size-7 has-text-right">
+					<div className="is-size-7 has-text-right has-text-danger">
 						{!logginFailureReason.password.value
 							? logginFailureReason.password.reason
 							: null}
