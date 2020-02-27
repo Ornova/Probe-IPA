@@ -63,7 +63,7 @@ const Login = () => {
 			if (username === user.username && password === user.password) {
 				console.log("B");
 				dispatch(toggleAdmin(!menuStore));
-				// history.push("/admin");
+				history.push("/admin");
 				setLogginFailureReason(loggin);
 			} else {
 				setLogginFailureReason({
