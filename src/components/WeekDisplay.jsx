@@ -1,11 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import Menuitem from "./Menuitem";
 import DayDisplay from "./DayDisplay";
 import "./../scss/buttons.scss";
 import "./../scss/weekdisplay.scss";
-import WeeklySpecial from "./WeeklySpecial";
 
 /**
  * Displays all different days in each Week, and the weekly special
@@ -127,16 +125,17 @@ const WeekDisplay = props => {
 					}
 				/>
 			</div>
-			{}
 			<div>
 				Weekly Special
-				<WeeklySpecial
+				<DayDisplay
+					selectedRestaurant={menuStore.selectedMenu}
 					date={
 						moment(momentclone)
 							.subtract(props.dayOne, "days")
 							.add(1, "days") // 1 day
 							.add(144, "hours") // 4 days
 					}
+					id="weeklySpecial"
 				/>
 			</div>
 		</div>

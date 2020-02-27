@@ -1,9 +1,12 @@
 import React from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import Menuitem from "./Menuitem";
 import { isChoosingMenuitem } from "./../redux/_actions/menu.actions";
 import { allItems } from "./../json/menu";
+
 import "./../scss/daydisplay.scss";
 
 const DayDislay = props => {
@@ -79,22 +82,15 @@ const DayDislay = props => {
 
 	return (
 		<div className="daydisplay" id={props.id}>
-			<div>
-				{compare()}
-				{menuStore.isAdmin && (
-					<input
-						type="button"
-						onClick={event => handleButtonClick()}
-						value="+"
-						className="button "
-						style={{
-							position: "relative",
-							bootom: 0,
-							right: 0
-						}}
-					/>
-				)}
-			</div>
+			{compare()}
+			{menuStore.isAdmin && (
+				<input
+					type="button"
+					onClick={event => handleButtonClick()}
+					value="+"
+					className="button "
+				/>
+			)}
 		</div>
 	);
 };

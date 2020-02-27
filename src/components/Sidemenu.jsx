@@ -88,6 +88,13 @@ const Sidemenu = () => {
 					</li>
 				</ul>
 			)}
+			<input
+				type="button"
+				className="button is-rounded sidemenu-toggler"
+				onClick={() => {
+					history.push("/login");
+				}}
+			></input>
 		</div>
 	);
 };

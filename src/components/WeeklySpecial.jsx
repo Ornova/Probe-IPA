@@ -1,9 +1,12 @@
 import React from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import Menuitem from "./Menuitem";
 import { isChoosingMenuitem } from "./../redux/_actions/menu.actions";
 import { allItems } from "./../json/menu";
+
 import "./../scss/daydisplay.scss";
 
 const WeeklySpecial = props => {
@@ -63,7 +66,6 @@ const WeeklySpecial = props => {
 				return n === item.id;
 			});
 		});
-
 		// output of all menuitems one for one
 		return filteredMenus.map(m => (
 			<Menuitem
@@ -87,11 +89,6 @@ const WeeklySpecial = props => {
 					value="+"
 					className="button"
 					date={props.date.format("DD-MM-YYYY")}
-					style={{
-						position: "relative",
-						bootom: 0,
-						right: 0
-					}}
 				/>
 			)}
 		</div>

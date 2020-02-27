@@ -7,8 +7,7 @@ import Menulist from "./components/Menulist";
 import AdminView from "./components/AdminView";
 import CustomerView from "./components/CustomerView";
 import { allItems, getItems } from "./json/menu";
-import "bulma";
-import "./App.css";
+import "./../node_modules/bulma/bulma.sass";
 
 const store = configureStore();
 
