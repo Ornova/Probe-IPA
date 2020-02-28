@@ -51,7 +51,8 @@ const Menuitem = props => {
 	 * changeItemPreparation
 	 * prepares everything so that the item can be easily added to the day
 	 */
-	function changeItemPreparation() {
+	function changeItemPreparation(event) {
+		event.preventDefault();
 		/* changing mode to item choosing mode */
 		dispatch(isChoosingMenuitem({ bool: true, date: props.date }));
 		/* rediriect to the full menulist */
@@ -61,58 +62,50 @@ const Menuitem = props => {
 	}
 
 	return (
-		<div>
-			{/*
-			 explanation onClick:
-			 if the user should be choosing a Menuitem
-			 the Item clicked will be added to the list of Items
-			 	for the day from which the selection was first started
-			 else it will check if there is a date definded,
-			 the absence of which is the signifing character that
-			 	the menulist was called over itself and not to select an item for a day
-			 */}
-			<div
-				className="menuitem"
-				id={props.id}
-				onClick={() => {
-					return menuStore.isChoosingMenuitem.bool
-						? selectMenuitem(props.id)
-						: props.date
-						? showButtons()
-						: props.selectItem({
-								id: props.id,
-								name: props.name,
-								price: props.price,
-								description: props.description
-						  });
-				}}
-			>
-				<div className="name">{props.name}</div>
-				<div className="price">{props.price}</div>
-				<div className="description">{props.description}</div>
+		<div
+			className="menuitem"
+			id={props.id}
+			onClick={() => {
+				return menuStore.isChoosingMenuitem.bool
+					? selectMenuitem(props.id)
+					: props.date
+					? showButtons()
+					: props.selectItem({
+							id: props.id,
+							name: props.name,
+							price: props.price,
+							description: props.description
+					  });
+			}}
+		>
+			<div className="name">{props.name}</div>
+			<div className="price">{props.price}</div>
+			<div className="description">{props.description}</div>
 
-				{/* if the user is an admin and areButtonsVisible is true then the following code will be exceuted */}
-				{menuStore.isAdmin && areButtonsVisible && (
-					<div>
-						<input
-							value="..."
-							type="button"
-							onClick={() => {
-								changeItemPreparation();
-							}}
-							className="button menuitem-button-1"
-						/>
-						<input
-							value="Remove Item"
-							type="button"
-							onClick={() => {
-								dispatch(removeItem({ date: props.date, id: props.id }));
-							}}
-							className="button menuitem-button-2"
-						/>
-					</div>
-				)}
-			</div>
+			{/* if the user is an admin and areButtonsVisible is true then the following code will be exceuted */}
+			{menuStore.isAdmin && areButtonsVisible && (
+				<div>
+					<button
+						type="submit"
+						onClick={event => {
+							changeItemPreparation(event);
+						}}
+						className="button menuitem-button-1"
+					>
+						...
+					</button>
+					<button
+						type="submit"
+						onClick={event => {
+							event.preventDefault();
+							dispatch(removeItem({ date: props.date, id: props.id }));
+						}}
+						className="button menuitem-button-2"
+					>
+						Remove Item
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };

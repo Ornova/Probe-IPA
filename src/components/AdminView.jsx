@@ -17,7 +17,7 @@ const AdminView = props => {
 	const dayOne = momentNow.day();
 
 	return (
-		<div className="view">
+		<section className="view">
 			{/* Displays the Navigation Menu on the lefthand side of the Page */}
 			<Sidemenu />
 			{/*
@@ -54,7 +54,7 @@ const AdminView = props => {
 				date={momentNow4}
 				selectedRestaurant={selectedRestaurant}
 			/>
-		</div>
+		</section>
 	);
 };
 

@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import useOutsideClick from "./useOutsideClick";
 import "./../scss/sidemenu.scss";
-import { restaurants } from "./../json/restaurants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { changeMenu } from "./../redux/_actions/menu.actions";
 
+import { restaurants } from "./../json/restaurants";
+import { changeMenu } from "./../redux/_actions/menu.actions";
 import { toggleAdmin } from "./../redux/_actions/menu.actions";
 
 const Sidemenu = () => {
@@ -12,9 +16,16 @@ const Sidemenu = () => {
 	const isAdmin = useSelector(state => state.menu.isAdmin);
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const ref = useRef();
 
 	// is sidemenu expanded
 	const [isExpanded, toggleIsExpanded] = useState();
+
+	useOutsideClick(ref, () => {
+		if (isExpanded) {
+			toggleIsExpanded(!isExpanded);
+		}
+	});
 
 	/**
 	 * listAllNavOptions
@@ -36,6 +47,7 @@ const Sidemenu = () => {
 			filteredRestaurants.map(f =>
 				restaurantList.push(
 					<li
+						className="list-item"
 						key={f.id}
 						onClick={() => {
 							dispatch(changeMenu(f.statevalue));
@@ -51,24 +63,28 @@ const Sidemenu = () => {
 	}
 
 	return (
-		<div className={!isExpanded ? "sidemenu" : "expanded-sidemenu"}>
+		<section className={!isExpanded ? "sidemenu" : "expanded-sidemenu"} ref={ref}>
 			<div className="sidemenu-button">
 				<label htmlFor="sidemenu-toggler">
-					<input
-						type="button"
+					<button
+						type="submit"
 						className="button is-rounded sidemenu-toggler"
-						onClick={() => {
+						onClick={event => {
+							event.preventDefault();
 							toggleIsExpanded(!isExpanded);
 						}}
-					></input>
+					>
+						<FontAwesomeIcon icon={faBars} />
+					</button>
 				</label>
 			</div>
 			{/* if sidemenu is expanded */}
 			{isExpanded && (
-				<ul>
+				<ul className="list ">
 					{listAllNavOptions()}
-					{isAdmin ? (
+					{isAdmin && (
 						<li
+							className="list-item"
 							key="menuitemlist"
 							onClick={() => {
 								history.push("/menulist");
@@ -76,26 +92,37 @@ const Sidemenu = () => {
 						>
 							Menulist
 						</li>
-					) : null}
-					<li>
-						<input
-							type="button"
-							className="button is-rounded"
+					)}
+					{isAdmin ? (
+						<li
+							className="list-item"
 							onClick={() => {
-								dispatch(toggleAdmin(!isAdmin));
+								dispatch(toggleAdmin(false));
 							}}
-						/>
+						>
+							Log out
+						</li>
+					) : (
+						<li
+							className="list-item"
+							onClick={() => {
+								history.push("/login");
+							}}
+						>
+							Log In
+						</li>
+					)}
+					<li
+						className="list-item"
+						onClick={() => {
+							dispatch(toggleAdmin(!isAdmin));
+						}}
+					>
+						toggleAdmin
 					</li>
 				</ul>
 			)}
-			<input
-				type="button"
-				className="button is-rounded sidemenu-toggler"
-				onClick={() => {
-					history.push("/login");
-				}}
-			></input>
-		</div>
+		</section>
 	);
 };
 

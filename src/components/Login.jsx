@@ -77,7 +77,7 @@ const Login = () => {
 	}
 
 	return (
-		<div className="container">
+		<section className="container">
 			<form className="login has-text-centered">
 				<div className="field">
 					<p className="control has-icons-left">
@@ -135,7 +135,7 @@ const Login = () => {
 					</p>
 				</div>
 			</form>
-		</div>
+		</section>
 	);
 };
 

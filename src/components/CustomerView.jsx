@@ -13,14 +13,14 @@ const CustomerView = props => {
 	const dayOne = momentNow.day();
 
 	return (
-		<div className="view">
+		<section className="view">
 			{/* Displays the Navigation Menu on the lefthand side of the Page */}
 			<Sidemenu />
 			{/* Displays the first week */}
 			<WeekDisplay dayOne={dayOne} date={momentNow} />
 			{/* Displays the second week */}
 			<WeekDisplay dayOne={dayOne} date={momentNow2} />
-		</div>
+		</section>
 	);
 };
 

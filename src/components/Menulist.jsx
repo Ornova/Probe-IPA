@@ -59,12 +59,20 @@ const Menulist = props => {
 	}
 
 	return (
-		<div>
+		<section>
 			{/* Displays the Navigation Menu on the lefthand side of the Page */}
 			<Sidemenu />
 			<div className="menulist">{showAllItems()}</div>
 			{menuStore.isAdmin && (
-				<input type="button" className="button menulist-add" onClick={() => {}} value="+" />
+				<button
+					type="submit"
+					className="button menulist-add"
+					onClick={event => {
+						event.preventDefault();
+					}}
+				>
+					+
+				</button>
 			)}
 			{menuStore.isAdmin && selectedItem && (
 				<div className="editMenuitem">
@@ -93,30 +101,37 @@ const Menulist = props => {
 						onChange={event => changeItem(event)}
 					/>
 					<div className="control-buttons-critical">
-						<input
-							type="button"
+						<button
+							type="submit"
 							className="button is-rounded is-danger"
-							value="Delete"
-							onChange={() => {}}
-						/>
+							onChange={event => {
+								event.preventDefault();
+							}}
+						>
+							Delete
+						</button>
 					</div>
 					<div className="control-buttons-non-critical">
-						<input
-							type="button"
+						<button
+							type="submit"
 							className="button is-rounded is-danger"
-							value="Add"
-							onClick={() => {}}
-						/>
-						<input
-							type="button"
+							onClick={event => {
+								event.preventDefault();
+							}}
+						>
+							Add
+						</button>
+						<button
+							type="submit"
 							className="button is-rounded is-danger"
-							value="Cancel"
-							onClick={() => cancelButton()}
-						/>
+							onClick={event => cancelButton()}
+						>
+							Cancel
+						</button>
 					</div>
 				</div>
 			)}
-		</div>
+		</section>
 	);
 };
 

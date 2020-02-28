@@ -19,7 +19,7 @@ const DayDislay = props => {
 	 * handles the click of the "+"-Button to add an item to the day
 	 */
 	function handleButtonClick() {
-		dispatch(isChoosingMenuitem({ bool: true, date: props.date.format("DD-MM-YYYY") }));
+		dispatch(isChoosingMenuitem({ bool: true, date: props.date.format("DD.MM.YYYY") }));
 		// redirect to the menulist
 		history.push("/menulist");
 	}
@@ -38,19 +38,19 @@ const DayDislay = props => {
 				if (menuStore.menu1)
 					filteredByDateMenus = menuStore.menu1.filter(n => {
 						// filter for the day
-						return n.date === props.date.format("DD-MM-YYYY");
+						return n.date === props.date.format("DD.MM.YYYY");
 					});
 				break;
 			case "menu2":
 				if (menuStore.menu2)
 					filteredByDateMenus = menuStore.menu2.filter(n => {
-						return n.date === props.date.format("DD-MM-YYYY");
+						return n.date === props.date.format("DD.MM.YYYY");
 					});
 				break;
 			case "menu3":
 				if (menuStore.menu3)
 					filteredByDateMenus = menuStore.menu3.filter(n => {
-						return n.date === props.date.format("DD-MM-YYYY");
+						return n.date === props.date.format("DD.MM.YYYY");
 					});
 				break;
 
@@ -75,23 +75,20 @@ const DayDislay = props => {
 				price={m.price}
 				description={m.desc}
 				id={m.id}
-				date={props.date.format("DD-MM-YYYY")}
+				date={props.date.format("DD.MM.YYYY")}
 			/>
 		));
 	}
 
 	return (
-		<div className="daydisplay" id={props.id}>
+		<section className="daydisplay" id={props.id}>
 			{compare()}
 			{menuStore.isAdmin && (
-				<input
-					type="button"
-					onClick={event => handleButtonClick()}
-					value="+"
-					className="button "
-				/>
+				<button type="submit" onClick={() => handleButtonClick()} className="button">
+					+
+				</button>
 			)}
-		</div>
+		</section>
 	);
 };
 
