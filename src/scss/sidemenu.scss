@@ -1,33 +1,78 @@
 .sidemenu-button {
-	padding-top: 0.25em;
-	padding-left: 0.25em;
-	padding-right: 0.25em;
-	.sidemenu-toggler {
-		border: 2px solid rgb(51, 51, 51);
-		border-radius: 100%;
-		height: 4.2em;
-		width: 4.2em;
+	padding-top: 0.25vw;
+	padding-left: 0.25vw;
+	padding-right: 0.25vw;
+	padding-bottom: 0.25vw;
+	@media (min-width: 1024px) {
+		.sidemenu-toggler {
+			border: 2px solid rgb(51, 51, 51);
+			border-radius: 100%;
+			height: 4em;
+			width: 4em;
+		}
+	}
+	@media (max-width: 1024px) {
+		.sidemenu-toggler {
+			border: 2px solid rgb(51, 51, 51);
+			border-radius: 100%;
+			height: 3em;
+			width: 3em;
+		}
 	}
 }
-.sidemenu {
-	color: white;
-	background-color: rgb(51, 51, 51);
-	position: fixed;
-	top: 0%;
-	left: 0%;
-	height: 100%;
-	width: 3.5vw;
-	z-index: 15;
+
+@media (min-width: 1024px) {
+	.sidemenu {
+		color: white;
+		background-color: rgb(51, 51, 51);
+		position: fixed;
+		top: 0%;
+		left: 0%;
+		height: 100%;
+		width: 3.5vw;
+		z-index: 15;
+	}
+	.expanded-sidemenu {
+		color: white;
+		background-color: rgb(51, 51, 51);
+		position: fixed;
+		top: 0%;
+		left: 0%;
+		height: 100%;
+		width: 12vw;
+		z-index: 15;
+	}
 }
-.expanded-sidemenu {
-	color: white;
-	background-color: rgb(51, 51, 51);
-	position: fixed;
-	top: 0%;
-	left: 0%;
-	height: 100%;
-	width: 12em;
-	z-index: 15;
+
+@media (max-width: 1024px) {
+	.sidemenu {
+		color: white;
+		background-color: rgb(51, 51, 51);
+		position: fixed;
+		top: 0%;
+		left: 0%;
+		height: 100%;
+		width: 12vw;
+		z-index: 15;
+	}
+	.expanded-sidemenu {
+		color: white;
+		background-color: rgb(51, 51, 51);
+		position: fixed;
+		top: 0%;
+		left: 0%;
+		height: 100%;
+		width: 42vw;
+		z-index: 20;
+	}
 }
-.menulist {
+
+.login-out {
+	position: fixed !important;
+	bottom: 5px;
+}
+.expanded-list {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 1fr;
 }

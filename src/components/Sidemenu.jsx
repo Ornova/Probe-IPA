@@ -80,47 +80,59 @@ const Sidemenu = () => {
 			</div>
 			{/* if sidemenu is expanded */}
 			{isExpanded && (
-				<ul className="list ">
-					{listAllNavOptions()}
-					{isAdmin && (
-						<li
-							className="list-item"
-							key="menuitemlist"
-							onClick={() => {
-								history.push("/menulist");
-							}}
-						>
-							Menulist
-						</li>
-					)}
-					{isAdmin ? (
-						<li
-							className="list-item"
-							onClick={() => {
-								dispatch(toggleAdmin(false));
-							}}
-						>
-							Log out
-						</li>
-					) : (
-						<li
-							className="list-item"
-							onClick={() => {
-								history.push("/login");
-							}}
-						>
-							Log In
-						</li>
-					)}
-					<li
-						className="list-item"
+				<div className="expanded-list">
+					<ul className="list ">
+						{listAllNavOptions()}
+						{isAdmin && (
+							<li
+								className="list-item"
+								key="menuitemlist"
+								onClick={() => {
+									history.push("/menulist");
+								}}
+							>
+								Menulist
+							</li>
+						)}
+					</ul>
+					<button
+						className="button"
 						onClick={() => {
 							dispatch(toggleAdmin(!isAdmin));
 						}}
 					>
 						toggleAdmin
-					</li>
-				</ul>
+					</button>
+					{isAdmin ? (
+						<>
+							<button
+								className="button"
+								onClick={() => {
+									history.push("/");
+								}}
+							>
+								Customer view
+							</button>
+							<button
+								className="button login-out"
+								onClick={() => {
+									dispatch(toggleAdmin(false));
+								}}
+							>
+								Log out
+							</button>
+						</>
+					) : (
+						<button
+							className="button login-out"
+							onClick={() => {
+								history.push("/login");
+							}}
+						>
+							Log In
+						</button>
+					)}
+				</div>
 			)}
 		</section>
 	);

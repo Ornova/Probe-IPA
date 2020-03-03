@@ -1,40 +1,84 @@
-.menulist {
-	position: relative;
-	margin-top: 10px;
-	margin-left: 5em;
-	display: grid;
-	gap: 20px;
-	grid-template-rows: repeat(1fr 1fr 1fr);
-	grid-template-columns: 1fr 1fr 1fr;
-	background-color: white;
-	width: fit-content;
-}
+@media (min-width: 1024px) {
+	.menulist {
+		position: relative;
+		margin-top: 10px;
+		margin-left: 5em;
+		display: grid;
+		gap: 20px;
+		grid-template-rows: repeat(1fr 1fr 1fr);
+		grid-template-columns: 1fr 1fr 1fr;
+		background-color: white;
+		width: fit-content;
+	}
 
-.editMenuitem {
-	margin-left: 64px;
-	background-color: red;
-	z-index: 25;
-	width: 60%;
-	min-height: 200px;
-	height: 40%;
-	position: fixed;
-	top: 30%;
-	transform: translateX(-30%);
-	left: 50%;
-	transform: translateX(-50%);
-	display: grid;
-	grid-template-rows: 1fr 1fr 3fr 1fr;
-	grid-template-columns: 1fr 2.5fr;
-	grid-template-areas:
-		"name-tag name"
-		"price-tag price"
-		"desc-tag desc"
-		"control-buttons-critical control-buttons-non-critical";
-	border: 1px solid black;
-	border-radius: 10px;
-	padding: 5px;
-	.price {
-		grid-area: price;
-		background-color: green;
+	.editMenuitem {
+		margin-left: 64px;
+		background-color: red;
+		z-index: 25;
+		width: 60%;
+		min-height: 200px;
+		height: 40%;
+		position: fixed;
+		top: 30%;
+		transform: translateX(-30%);
+		left: 50%;
+		transform: translateX(-50%);
+		display: grid;
+		grid-template-rows: 1fr 1fr 3fr 1fr;
+		grid-template-columns: 1fr 2.5fr;
+		grid-template-areas:
+			"name-tag name"
+			"price-tag price"
+			"desc-tag desc"
+			"control-buttons-critical control-buttons-non-critical";
+		border: 1px solid black;
+		border-radius: 10px;
+		padding: 5px;
+		.price {
+			grid-area: price;
+			background-color: green;
+		}
+	}
+}
+@media (max-width: 1024px) {
+	.menulist {
+		position: relative;
+		margin-top: 10px;
+		margin-left: 5em;
+		display: grid;
+		gap: 20px;
+		grid-template-rows: repeat(1fr 1fr 1fr);
+		grid-template-columns: 1fr;
+		background-color: white;
+		width: fit-content;
+	}
+
+	.editMenuitem {
+		margin-left: 64px;
+		background-color: red;
+		z-index: 25;
+		width: 60%;
+		min-height: 200px;
+		height: 40%;
+		position: fixed;
+		top: 30%;
+		transform: translateX(-30%);
+		left: 50%;
+		transform: translateX(-50%);
+		display: grid;
+		grid-template-rows: 1fr 1fr 3fr 1fr;
+		grid-template-columns: 1fr 2.5fr;
+		grid-template-areas:
+			"name-tag name"
+			"price-tag price"
+			"desc-tag desc"
+			"control-buttons-critical control-buttons-non-critical";
+		border: 1px solid black;
+		border-radius: 10px;
+		padding: 5px;
+		.price {
+			grid-area: price;
+			background-color: green;
+		}
 	}
 }

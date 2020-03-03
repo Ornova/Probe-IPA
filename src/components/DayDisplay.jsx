@@ -81,14 +81,17 @@ const DayDislay = props => {
 	}
 
 	return (
-		<section className="daydisplay" id={props.id}>
-			{compare()}
-			{menuStore.isAdmin && (
-				<button type="submit" onClick={() => handleButtonClick()} className="button">
-					+
-				</button>
-			)}
-		</section>
+		<div id={props.id} className="scrollsnap">
+			{props.name}
+			<section className="daydisplay">
+				{compare()}
+				{menuStore.isAdmin && (
+					<button type="submit" onClick={() => handleButtonClick()} className="button">
+						+
+					</button>
+				)}
+			</section>
+		</div>
 	);
 };
 

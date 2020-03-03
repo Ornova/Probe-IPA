@@ -28,13 +28,13 @@ const Login = () => {
 	function handleLogin(event) {
 		event.preventDefault();
 		let loggin = {
-			username: { value: true, reason: "" },
-			password: { value: true, reason: "" }
+			username: { isValid: true, reason: "" },
+			password: { isValid: true, reason: "" }
 		};
 		if (3 < username.length && username.length < 33) {
 			loggin = {
 				username: {
-					value: true,
+					isValid: true,
 					reason: ""
 				},
 				password: loggin.password
@@ -42,26 +42,25 @@ const Login = () => {
 		} else {
 			loggin = {
 				username: {
-					value: false,
+					isValid: false,
 					reason: "Username must be at least 4 and at most 32 characters long"
 				},
 				password: loggin.password
 			};
 		}
 		if (7 < password.length) {
-			loggin = { username: loggin.username, password: { value: true, reason: "" } };
+			loggin = { username: loggin.username, password: { isValid: true, reason: "" } };
 		} else {
 			loggin = {
 				username: loggin.username,
 				password: {
-					value: false,
+					isValid: false,
 					reason: "Password must be at least 8 characters long"
 				}
 			};
 		}
-		if (loggin.username.value && loggin.password.value) {
+		if (loggin.username.isValid && loggin.password.isValid) {
 			if (username === user.username && password === user.password) {
-				console.log("B");
 				dispatch(toggleAdmin(!menuStore));
 				history.push("/admin");
 				setLogginFailureReason(loggin);

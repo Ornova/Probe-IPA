@@ -63,7 +63,7 @@ const Menuitem = props => {
 
 	return (
 		<div
-			className="menuitem"
+			className="menuitem is-rounded"
 			id={props.id}
 			onClick={() => {
 				return menuStore.isChoosingMenuitem.bool

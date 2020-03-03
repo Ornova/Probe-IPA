@@ -1,9 +1,33 @@
-.weekdisplay {
-	width: 90vw;
-	display: grid;
-	grid-template-rows: 1fr;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-	border: 1px solid black;
-	padding: 5px;
-	margin: 5px;
+@media (min-width: 1024px) {
+	.weekdisplay {
+		width: 90vw;
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		border: 1px solid black;
+		padding: 5px;
+		margin: 5px;
+	}
+}
+@media (max-width: 1024px) {
+	.weekdisplay {
+		width: 72vw;
+		grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+		grid-template-columns: 1fr;
+		border-bottom: 1px solid black;
+		margin-top: 2vh;
+		margin-left: 4vw;
+		margin-right: 4vw;
+	}
+
+	#weeklySpecial {
+		z-index: 15;
+		background-color: white;
+		position: sticky;
+		bottom: 1vh;
+		section {
+			min-height: 15vh;
+			height: fit-content;
+		}
+	}
 }
