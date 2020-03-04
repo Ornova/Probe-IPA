@@ -42,7 +42,6 @@ const WeekDisplay = props => {
 						selectedRestaurant={day.selectedRestaurant}
 						date={day.date}
 						day={day.dayNum}
-						dayId={day.dayId}
 					/>
 				);
 			})}
