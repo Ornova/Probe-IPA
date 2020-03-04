@@ -19,7 +19,7 @@ const DayDislay = props => {
 	 * handles the click of the "+"-Button to add an item to the day
 	 */
 	function handleButtonClick() {
-		dispatch(isChoosingMenuitem({ bool: true, date: props.date.format("DD.MM.YYYY") }));
+		dispatch(isChoosingMenuitem({ bool: true, date: props.date }));
 		// redirect to the menulist
 		history.push("/menulist");
 	}
@@ -33,35 +33,24 @@ const DayDislay = props => {
 		let filteredMenus = [];
 
 		//filters for the menu
-		switch (menuStore.selectedMenu) {
-			case "menu1":
-				if (menuStore.menu1)
-					filteredByDateMenus = menuStore.menu1.filter(n => {
-						// filter for the day
-						return n.date === props.date.format("DD.MM.YYYY");
-					});
-				break;
-			case "menu2":
-				if (menuStore.menu2)
-					filteredByDateMenus = menuStore.menu2.filter(n => {
-						return n.date === props.date.format("DD.MM.YYYY");
-					});
-				break;
-			case "menu3":
-				if (menuStore.menu3)
-					filteredByDateMenus = menuStore.menu3.filter(n => {
-						return n.date === props.date.format("DD.MM.YYYY");
-					});
-				break;
+		filteredByDateMenus = menuStore[
+			// prettier-ignore
+			menuStore.selectedMenu === "menu1"
+				? "menu1"
+				: menuStore.selectedMenu === "menu2"
+					? "menu2"
+					: menuStore.selectedMenu === "menu3"
+						? "menu3"
+						: "menu1"
+		].filter(n => {
+			// filter for the day
+			return n.date === props.date;
+		});
 
-			default:
-				return null;
-		}
 		filteredByDateMenus.map(n => {
 			return allItems.map(item => {
 				if (n.id === item.id) {
 					filteredMenus.push(item);
-					console.log(item);
 				}
 				return n === item.id;
 			});
@@ -70,18 +59,18 @@ const DayDislay = props => {
 		// output of all menuitems one for one
 		return filteredMenus.map(m => (
 			<Menuitem
-				key={m.id}
+				key={m.date}
 				name={m.name}
 				price={m.price}
 				description={m.desc}
 				id={m.id}
-				date={props.date.format("DD.MM.YYYY")}
+				date={props.date}
 			/>
 		));
 	}
 
 	return (
-		<div id={props.id} className="scrollsnap">
+		<div id={props.id} className="day">
 			{props.name}
 			<section className="daydisplay">
 				{compare()}

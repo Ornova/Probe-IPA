@@ -2,14 +2,16 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { configureStore } from "./redux/store";
 import { Provider } from "react-redux";
+import * as moment from "moment";
+import "moment/locale/de-ch";
 import Login from "./components/Login";
 import Menulist from "./components/Menulist";
-import AdminView from "./components/AdminView";
-import CustomerView from "./components/CustomerView";
+import View from "./components/View";
 import { allItems, getItems } from "./json/menu";
 import "./../node_modules/bulma/bulma.sass";
 
 const store = configureStore();
+moment.locale("de-ch");
 
 const App = () => {
 	if (!localStorage.getItem("menu")) {
@@ -32,14 +34,11 @@ const App = () => {
 						<Route path="/login">
 							<Login />
 						</Route>
-						<Route path="/admin">
-							<AdminView />
-						</Route>
 						<Route path="/menulist">
 							<Menulist />
 						</Route>
 						<Route path="/">
-							<CustomerView />
+							<View />
 						</Route>
 					</Switch>
 				</div>

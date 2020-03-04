@@ -1,9 +1,10 @@
 import React, { useState, useRef } from "react";
 import useOutsideClick from "./useOutsideClick";
 import "./../scss/sidemenu.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 

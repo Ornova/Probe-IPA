@@ -31,6 +31,7 @@ const Login = () => {
 			username: { isValid: true, reason: "" },
 			password: { isValid: true, reason: "" }
 		};
+
 		if (3 < username.length && username.length < 33) {
 			loggin = {
 				username: {
@@ -48,6 +49,7 @@ const Login = () => {
 				password: loggin.password
 			};
 		}
+
 		if (7 < password.length) {
 			loggin = { username: loggin.username, password: { isValid: true, reason: "" } };
 		} else {
@@ -59,6 +61,7 @@ const Login = () => {
 				}
 			};
 		}
+
 		if (loggin.username.isValid && loggin.password.isValid) {
 			if (username === user.username && password === user.password) {
 				dispatch(toggleAdmin(!menuStore));

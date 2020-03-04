@@ -1,22 +1,22 @@
-@media (min-width: 1024px) {
-	.daydisplay {
-		display: grid;
-		grid-template-rows: auto;
-		border: 1px solid black;
-		border-radius: 10px;
-		margin: 5px;
-		margin-bottom: 2vh;
-		height: 42vh;
-	}
+.day {
+	margin: 1vh;
+	margin-top: 0;
 }
-@media (max-width: 1024px) {
+.daydisplay {
+	display: grid;
+	grid-template-rows: auto;
+	height: 72vh;
+	margin: 5px 5px 1vh 5px;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+@media (min-width: 1024px) {
+	.day {
+		margin: 0;
+	}
 	.daydisplay {
-		display: grid;
-		grid-template-rows: auto;
-		border: 1px solid black;
-		border-radius: 10px;
-		margin: 5px;
-		margin-bottom: 2vh;
-		height: 72vh;
+		min-height: 65vh;
+		height: fit-content;
+		margin-bottom: 1vh;
 	}
 }

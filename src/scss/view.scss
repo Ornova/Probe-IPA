@@ -1,0 +1,12 @@
+.view {
+	position: relative;
+	margin-top: 10px;
+	margin-left: 15vw;
+}
+@media (min-width: 1024px) {
+	.view {
+		position: relative;
+		margin-top: 10px;
+		margin-left: 5vw;
+	}
+}
