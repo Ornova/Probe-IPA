@@ -27,8 +27,7 @@ const WeekDisplay = props => {
 			name: date.format("ddd DD.MM.YYYY"),
 			selectedRestaurant: menuStore.selectedMenu,
 			date: date,
-			day: x,
-			dayId: date + x
+			day: x
 		});
 	}
 
