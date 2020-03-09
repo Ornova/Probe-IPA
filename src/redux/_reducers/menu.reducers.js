@@ -99,11 +99,45 @@ export default (state = preloadedState, action) => {
 				isChoosingMenuitem: action.payload
 			});
 		case IMPORT_MENUS:
-			if (action.payload.menu1 && action.payload.menu2 && action.payload.menu3) {
+			let isMenu1 = false;
+			if (action.payload.menu1) isMenu1 = true;
+			let isMenu2 = false;
+			if (action.payload.menu2) isMenu2 = true;
+			let isMenu3 = false;
+			if (action.payload.menu3) isMenu3 = true;
+
+			if (isMenu1 && isMenu2 && isMenu3) {
 				return Object.assign({}, state, {
 					menu1: action.payload.menu1,
 					menu2: action.payload.menu2,
 					menu3: action.payload.menu3
+				});
+			} else if (isMenu1 && isMenu2) {
+				return Object.assign({}, state, {
+					menu1: action.payload.menu1,
+					menu2: action.payload.menu2
+				});
+			} else if (isMenu1 && isMenu3) {
+				return Object.assign({}, state, {
+					menu1: action.payload.menu1,
+					menu3: action.payload.menu3
+				});
+			} else if (isMenu2 && isMenu3) {
+				return Object.assign({}, state, {
+					menu2: action.payload.menu2,
+					menu3: action.payload.menu3
+				});
+			} else if (isMenu1) {
+				return Object.assign({}, state, {
+					menu1: action.payload.menu1
+				});
+			} else if (isMenu2) {
+				return Object.assign({}, state, {
+					menu1: action.payload.menu1
+				});
+			} else if (isMenu3) {
+				return Object.assign({}, state, {
+					menu1: action.payload.menu1
 				});
 			} else {
 				return Object.assign({}, state, { menu1: [], menu2: [], menu3: [] });

@@ -112,7 +112,7 @@ const Sidemenu = () => {
 									history.push("/");
 								}}
 							>
-								Customer view
+								CustomerView
 							</button>
 							<button
 								className="button login-out"

@@ -21,12 +21,14 @@ const WeekDisplay = props => {
 	for (let x = 0; x < weekdays; x++) {
 		const date = moment(momentclone)
 			.subtract(props.dayOne, "days")
+			.startOf("day")
+			.add(1, "hour")
 			.add(1, "days") // 1 day
 			.add(x, "days"); // 1 day
 		week.push({
 			name: date.format("ddd DD.MM.YYYY"),
 			selectedRestaurant: menuStore.selectedMenu,
-			date: date,
+			date: date.format("DD.MM.YYYY"),
 			day: x
 		});
 	}
@@ -48,12 +50,13 @@ const WeekDisplay = props => {
 				id="weeklySpecial"
 				name="Weekly Special"
 				selectedRestaurant={menuStore.selectedMenu}
-				date={
-					moment(momentclone)
-						.subtract(props.dayOne, "days")
-						.add(1, "days") // 1 day
-						.add(144, "hours") // 4 days
-				}
+				date={moment(momentclone)
+					.subtract(props.dayOne, "days")
+					.startOf("day")
+					.add(1, "hour")
+					.add(1, "days") // 1 day
+					.add(144, "hours") // 4 days
+					.format("DD.MM.YYYY")}
 			/>
 		</div>
 	);
