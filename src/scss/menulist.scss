@@ -67,7 +67,7 @@
 	}
 	.control-buttons-non-critical {
 		grid-area: control-buttons-non-critical;
-		background-color: lightblue;
+		background-color: white;
 	}
 }
 
@@ -87,9 +87,5 @@
 			"price-tag price"
 			"description-tag description"
 			"control-buttons-critical control-buttons-non-critical";
-		.control-buttons-non-critical {
-			grid-area: control-buttons-non-critical;
-			background-color: white;
-		}
 	}
 }
